@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Visualization</title>
+</head>
+<body>
+    <h1>Select a date and location to view temperature data</h1>
+    <form method="POST">
+        <label for="date">Choose a date:</label>
+        <input type="date" id="date" name="date" required>
+        <br>
+        <label for="location">Choose a location:</label>
+        <select id="location" name="location" required>
+            <option value="">--Please choose a location--</option>
+            {% for location in locations %}
+                <option value="{{ location }}" {% if location == selected_location %}selected{% endif %}>{{ location }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <button type="submit">Create Image</button>
+    </form>
+
+    {% if img %}
+        <h2>Temperature Variation over Time</h2>
+        <img src="data:image/png;base64,{{ img }}" alt="Temperature Chart">
+    {% endif %}
+
+    <p style="font-size: 0.9em; color: gray; margin-top: 20px;">
+        Note: The temperature values displayed represent the hourly average temperature.
+    </p>
+</body>
+</html>

@@ -1,0 +1,10 @@
+/* Add your CSS styles here */
+body {
+    font-family: Arial, sans-serif;
+}
+
+#chart {
+    width: 80%;
+    height: 400px;
+    margin: 20px auto;
+}
